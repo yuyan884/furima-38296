@@ -28,7 +28,7 @@
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_fee_id    | integer    | null: false                    |
-| source_pref_id     | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | days_delivery_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
@@ -63,7 +63,7 @@
   * 0: ---
   * 1: 着払い(購入者負担)
   * 2: 送料込み(出品者負担)
-* source_pref_id
+* prefecture_id
   * 0: ---
   * 1: 北海道
   * ...
