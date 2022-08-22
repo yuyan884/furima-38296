@@ -17,7 +17,7 @@
 
 #### Association
 - has_many :items
-- has_many :historys
+- has_many :histories
 
 ### "items" table
 
@@ -34,8 +34,8 @@
 | user               | references | null: false, foreign_key: true |
 
 #### Association
-- belongs_to :users
-- has_one    :historys
+- belongs_to :user
+- has_one    :history
 
 #### Notes
 
@@ -74,7 +74,7 @@
   * 2: 2~3日で発送
   * 3: 4~7日で発送
 
-### "historys" table
+### "histories" table
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -82,9 +82,9 @@
 | item               | references | null: false, foreign_key: true |
 
 #### Association
-- belongs_to :users
-- belongs_to :items
-- has_one    :destinations
+- belongs_to :user
+- belongs_to :item
+- has_one    :destination
 
 ### "destinations" table
 
@@ -99,7 +99,7 @@
 | history            | references | null: false, foreign_key: true |
 
 #### Association
-- belongs_to :historys
+- belongs_to :history
 
 #### Notes
 
