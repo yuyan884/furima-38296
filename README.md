@@ -15,23 +15,31 @@
 | last_name_kana     | string     | null: false                    |
 | birthday           | date       | null: false                    |
 
+#### Association
+- has_many :items
+- has_many :historys
+
 ### "items" table
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | detail             | text       | null: false                    |
-| category           | integer    | null: false                    |
-| condition          | integer    | null: false                    |
-| shipping_fee       | integer    | null: false                    |
-| source_pref        | integer    | null: false                    |
-| days_delivery      | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_fee_id    | integer    | null: false                    |
+| source_pref_id     | integer    | null: false                    |
+| days_delivery_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
+#### Association
+- belongs_to :users
+- has_one    :historys
+
 #### Notes
 
-* category
+* category_id
   * 0: ---
   * 1: レディース
   * 2: メンズ
@@ -43,7 +51,7 @@
   * 8: スポーツ・レジャー
   * 9: ハンドメイド
   * 10: その他
-* condition
+* condition_id
   * 0: ---
   * 1: 新品・未使用
   * 2: 未使用に近い
@@ -51,37 +59,51 @@
   * 4: やや傷や汚れあり
   * 5: 傷や汚れあり
   * 6: 全体的に状態が悪い
-* shipping_burden
+* shipping_fee_id
   * 0: ---
   * 1: 着払い(購入者負担)
   * 2: 送料込み(出品者負担)
-* source_pref
+* source_pref_id
   * 0: ---
   * 1: 北海道
   * ...
   * 47: 沖縄県
-* days_delivery
+* days_delivery_id
   * 0: ---
   * 1: 1~2日で発送
   * 2: 2~3日で発送
   * 3: 4~7日で発送
 
+### "historys" table
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+
+#### Association
+- belongs_to :users
+- belongs_to :items
+- has_one    :destinations
+
 ### "destinations" table
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| postcode           | integer    | null: false                    |
-| prefecture         | integer    | null: false                    |
+| postcode           | string     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | house_number       | string     | null: false                    |
 | building_name      | string     |                                |
-| phone_number       | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
+| phone_number       | string     | null: false                    |
+| history            | references | null: false, foreign_key: true |
+
+#### Association
+- belongs_to :historys
 
 #### Notes
 
-* destination_pref
+* prefecture_id
   * 0: ---
   * 1: 北海道
   * ...
