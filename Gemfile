@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # For user management function at 2022.08.24
 gem 'devise'
+
+# For debug at 2022.08.24
+gem 'pry-rails'
