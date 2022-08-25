@@ -63,3 +63,7 @@ gem 'devise'
 
 # For debug at 2022.08.24
 gem 'pry-rails'
+
+# For image upload function at 2022.08.25
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
