@@ -102,7 +102,6 @@ RSpec.describe Item, type: :model do
         # 本テストでは、全角文字をInteger型に変換している。
         @item.price = ("あ").to_i
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
     end
