@@ -43,56 +43,62 @@ RSpec.describe Item, type: :model do
     end
 
     context 'パラメータの内容が不正の場合' do
-      it 'category_idが範囲外の場合' do
+      it 'category_idが範囲外(0)の場合' do
         @item.category_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
-
+      end
+      it 'category_idが範囲外(11)の場合' do
         @item.category_id = Category.data.length
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it 'condition_idが範囲外の場合' do
+      it 'condition_idが範囲外(0)の場合' do
         @item.condition_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
-
+      end
+      it 'condition_idが範囲外(7)の場合' do
         @item.condition_id = Condition.data.length
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it 'shipping_fee_idが範囲外の場合' do
+      it 'shipping_fee_idが範囲外(0)の場合' do
         @item.shipping_fee_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
-
+      end
+      it 'shipping_fee_idが範囲外(3)の場合' do
         @item.shipping_fee_id = ShippingFee.data.length
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
-      it 'prefecture_idが範囲外の場合' do
+      it 'prefecture_idが範囲外(0)の場合' do
         @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
-
-        @item.prefecture_id = Prefecture.data.length,
+      end
+      it 'prefecture_idが範囲外(48)の場合' do
+        @item.prefecture_id = Prefecture.data.length
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it 'days_delivery_idが範囲外の場合' do
+      it 'days_delivery_idが範囲外(0)の場合' do
         @item.days_delivery_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Days delivery can't be blank")
-
+      end
+      it 'days_delivery_idが範囲外(4)の場合' do
         @item.days_delivery_id = DaysDelivery.data.length
         @item.valid?
         expect(@item.errors.full_messages).to include("Days delivery can't be blank")
       end
-      it 'priceが範囲外の場合' do
+      it 'priceが範囲外(300 - 1)の場合' do
         @item.price = 300 - 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
-
+      end
+      it 'priceが範囲外(9999999 + 1)の場合' do
         @item.price = 9999999 + 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
