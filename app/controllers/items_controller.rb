@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:new, :create]
 
   def index
-    @items = Item.order("created_at DESC")
   end
 
   def new
