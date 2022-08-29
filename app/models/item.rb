@@ -21,5 +21,6 @@ class Item < ApplicationRecord
   validates :shipping_fee_id,  numericality: { greater_than: BLANK_MENU, less_than: ShippingFee.data.length,  message: "can't be blank" }
   validates :prefecture_id,    numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length,   message: "can't be blank" }
   validates :days_delivery_id, numericality: { greater_than: BLANK_MENU, less_than: DaysDelivery.data.length, message: "can't be blank" }
-  validates :price,            numericality: { greater_than_or_equal_to: (MIN_PRICE+1), less_than_or_equal_to: (MAX_PRICE+1), message: "is out of setting range" }, format: { with: HALF_INT_REGEX, message: "is invalid. Input half-width characters"}
+  validates :price,            numericality: { greater_than_or_equal_to: MIN_PRICE, less_than_or_equal_to: MAX_PRICE, message: "is out of setting range" }, format: { with: HALF_INT_REGEX, message: "is invalid. Input half-width characters"}
+  validates :image,            presence: true
 end
