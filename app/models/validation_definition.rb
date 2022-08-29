@@ -5,7 +5,4 @@ module ValidationDefinition
   BLANK_MENU        = 0       # プルダウンメニュー: '---'
   MIN_PRICE         = 300     # 設定可能な最低販売価格
   MAX_PRICE         = 9999999 # 設定可能な最高販売価格
-
-  # 正規表現
-  HALF_INT_REGEX    = /\d+/   # 半角数字のみを検出する正規表現
 end

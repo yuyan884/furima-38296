@@ -14,7 +14,7 @@ FactoryBot.define do
     shipping_fee  {ShippingFee.where(id: (BLANK_MENU+1)..ShippingFee.count).sample}
     prefecture    {Prefecture.where(id: (BLANK_MENU+1)..Prefecture.count).sample}
     days_delivery {DaysDelivery.where(id: (BLANK_MENU+1)..DaysDelivery.count).sample}
-    price         {Faker::Commerce.price(range: MIN_PRICE..MAX_PRICE)}
+    price         {Faker::Number.between(from: MIN_PRICE, to: MAX_PRICE)}
     association   :user
 
     after(:build) do |item|
