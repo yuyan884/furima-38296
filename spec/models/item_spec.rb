@@ -40,6 +40,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
+      it 'userが空(紐づいていない)の場合' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
     end
 
     context 'パラメータの内容が不正の場合' do
