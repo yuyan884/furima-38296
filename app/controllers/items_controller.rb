@@ -18,6 +18,30 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    # TODO: Issue #32 必要なインスタンスのみ取得するように変更する
+    items      = Item.order("created_at DESC")
+    index      = 0   # 取得した商品のインデックス
+    @item      = nil # 選択された商品
+    @prev_item = nil # 一つ前の商品
+    @next_item = nil # 一つ後の商品
+
+    items.each do |item_tmp|
+      if item_tmp.id == params[:id].to_i
+        @item = item_tmp
+        if (index > 0)
+          @prev_item = items[index - 1]
+        end
+        if (index <= items.length - 1)
+          @next_item = items[index + 1]
+        end
+        break
+      end
+      index += 1
+    end
+
+  end
+
   private
 
   def item_params
