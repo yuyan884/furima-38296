@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    # TODO: Issue #32 必要なインスタンスのみ取得するように変更する
     items      = Item.order("created_at DESC")
     index      = 0   # 取得した商品のインデックス
     @item      = nil # 選択された商品
