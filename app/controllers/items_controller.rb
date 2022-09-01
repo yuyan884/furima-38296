@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :move_to_index,      only: [:edit, :update]
+  before_action :get_item,           only: [:edit, :update]
 
   def index
     @items = Item.order("created_at DESC")
@@ -42,11 +43,11 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      @item = Item.find(params[:id])
+      # get_itemメソッドを実行
     end
 
     def update
-      @item = Item.find(params[:id])
+      # get_itemメソッドを実行
       if @item.update(item_params)
         redirect_to item_path(@item)
       else
@@ -66,6 +67,10 @@ class ItemsController < ApplicationController
     unless user_signed_in? && current_user.id == Item.find(params[:id]).user_id
       redirect_to root_path
     end
+  end
+
+  def get_item
+    @item = Item.find(params[:id])
   end
 
 end
