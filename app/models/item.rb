@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   belongs_to       :shipping_fee  # ActiveHash
   belongs_to       :prefecture    # ActiveHash
   belongs_to       :days_delivery # ActiveHash
+  has_one          :history       # Historyモデル
 
   # Validation
   validates :name,             presence: true, length: {maximum: MAX_NAME_LENGTH   }
