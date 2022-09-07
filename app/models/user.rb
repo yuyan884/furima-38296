@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Association
+  has_many  :items
+  has_many  :histories
+
   VALID_YEAR_REGEX = /\A19[3-9][0-9][-]\d{2}[-]\d{2}|#{(Time.now.year-5).to_s[0]}#{(Time.now.year-5).to_s[1]}[0-#{(Time.now.year-5).to_s[2]}][0-#{(Time.now.year-5).to_s[3]}][-]\d{2}[-]\d{2}\z/
 
   validates :nickname,        presence: true
@@ -12,5 +16,5 @@ class User < ApplicationRecord
   validates :first_name,      presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'Input full-width characters'}
   validates :last_name_kana,  presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: 'Input full-width katakana characters'}
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: 'Input full-width katakana characters'}
-  validates :birthday,        presence: true, format: { with: VALID_YEAR_REGEX, message: "Input 1930-01-01 to #{Time.now.year-5}-12-31"}
+  validates :birthday,        presence: true
 end

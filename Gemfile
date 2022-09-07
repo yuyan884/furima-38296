@@ -70,3 +70,6 @@ gem 'image_processing', '~> 1.2'
 
 # ActiveHash at 2022.08.25
 gem 'active_hash'
+
+# payjp at 2022.09.03
+gem 'payjp'

@@ -134,12 +134,13 @@
           <%= link_to item_path(item) do %>
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <%# 商品購入機能を実装時に対応する Issue #29 %>
-            <%#<div class='sold-out'> %>
-            <%#  <span>Sold Out!!</span> %>
-            <%#</div>%>
-            <%# //商品が売れていればsold outを表示しましょう %>
+
+            <%# 商品が売れている場合はSold outを表示する %>
+            <% if item.history != nil %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
 
           </div>
           <div class='item-info'>

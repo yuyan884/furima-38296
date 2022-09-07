@@ -42,27 +42,27 @@ class ItemsController < ApplicationController
       index += 1
     end
 
-    def edit
-      # get_itemメソッドを実行
-    end
+  end
 
-    def update
-      # get_itemメソッドを実行
-      if @item.update(item_params)
-        redirect_to item_path(@item)
-      else
-        render :edit
-      end
-    end
+  def edit
+    # get_itemメソッドを実行
+  end
 
-    def destroy
-      if @item.destroy
-        redirect_to root_path
-      else
-        render :show
-      end
+  def update
+    # get_itemメソッドを実行
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
     end
+  end
 
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == Item.find(params[:id]).user_id
+    unless current_user.id == Item.find(params[:id]).user_id && History.find_by(item_id: params[:id]) == nil
       redirect_to root_path
     end
   end

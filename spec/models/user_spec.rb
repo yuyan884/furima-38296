@@ -188,16 +188,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana Input full-width katakana characters")
       end
-      it 'birthdayが1929-12-31の場合は登録できない' do
-        @user.birthday = Date.new(1929,12,31)
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Birthday Input 1930-01-01 to 2017-12-31")
-      end
-      it 'birthdayが2018-01-01の場合は登録できない' do
-        @user.birthday = Date.new(2018,01,01)
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Birthday Input 1930-01-01 to 2017-12-31")
-      end
     end
   end
 end
