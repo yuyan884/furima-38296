@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order("created_at DESC")
-    @histories = History.all
   end
 
   def new
@@ -43,7 +42,6 @@ class ItemsController < ApplicationController
       index += 1
     end
 
-    @history = History.find_by(item_id: @item.id)
   end
 
   def edit
