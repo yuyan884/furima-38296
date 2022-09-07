@@ -11,12 +11,6 @@ RSpec.describe HistoryDestination, type: :model do
     sleep 0.1 # 0.1秒待機 (Mysql2::Error: MySQL client is not connected 対策)
   end
 
-  after do
-    unless @user.valid?
-      binding.pry
-    end
-  end
-
   ###############################################################
   #
   # 正常系

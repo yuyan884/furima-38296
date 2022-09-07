@@ -4,8 +4,6 @@ const pay = () => {
   submit.addEventListener("click", (e) => {
     e.preventDefault();
 
-    console.log("フォーム送信時にイベント発火")
-
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
