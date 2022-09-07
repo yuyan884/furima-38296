@@ -5,7 +5,16 @@ RSpec.describe HistoryDestination, type: :model do
   # 前処理
   ###############################################################
   before do
-    @history_destination = FactoryBot.build(:history_destination)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item, user_id: @user.id)
+    @history_destination = FactoryBot.build(:history_destination, user_id: @user.id, item_id: @item.id)
+    sleep 0.1 # 0.1秒待機 (Mysql2::Error: MySQL client is not connected 対策)
+  end
+
+  after do
+    unless @user.valid?
+      binding.pry
+    end
   end
 
   ###############################################################
@@ -57,6 +66,16 @@ RSpec.describe HistoryDestination, type: :model do
         @history_destination.prefecture_id = 0
         @history_destination.valid?
         expect(@history_destination.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it 'user_idが空(紐づいていない)の場合' do
+        @history_destination.user_id = nil
+        @history_destination.valid?
+        expect(@history_destination.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空(紐づいていない)の場合' do
+        @history_destination.item_id = nil
+        @history_destination.valid?
+        expect(@history_destination.errors.full_messages).to include("Item can't be blank")
       end
     end
 

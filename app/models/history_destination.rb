@@ -14,6 +14,8 @@ class HistoryDestination
     validates :house_number
     validates :phone_number,  format: { with: PHONENUMBER_REGEX, message: "is invalid. Input only number" }
     validates :token
+    validates :user_id
+    validates :item_id
   end
   validates :prefecture_id, numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length, message: "can't be blank" }
 
