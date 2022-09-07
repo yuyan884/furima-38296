@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == Item.find(params[:id]).user_id && History.find_by(item_id: params[:id]) == nil
+    unless current_user.id == Item.find(params[:id]).user_id && History.find_by(item_id: params[:id]) == nil
       redirect_to root_path
     end
   end
