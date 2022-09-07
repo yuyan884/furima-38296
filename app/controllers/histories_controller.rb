@@ -1,13 +1,15 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index
+  before_action :get_item
 
   def index
-    @item  = Item.find(params[:item_id])
+    # get_itemメソッドを実行
     @history_destination = HistoryDestination.new
   end
 
   def create
+    # get_itemメソッドを実行
     @history_destination = HistoryDestination.new(history_params)
 
     if @history_destination.valid?
@@ -15,7 +17,6 @@ class HistoriesController < ApplicationController
       pay_item
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
 
@@ -40,6 +41,10 @@ class HistoriesController < ApplicationController
     if current_user.id == Item.find(params[:item_id]).user_id || History.find_by(item_id: params[:item_id]) != nil
       return redirect_to root_path
     end
+  end
+
+  def get_item
+    @item = Item.find(params[:item_id])
   end
 
 end
