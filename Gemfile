@@ -73,3 +73,6 @@ gem 'active_hash'
 
 # payjp at 2022.09.03
 gem 'payjp'
+
+# AWS S3 2022.09.07
+gem "aws-sdk-s3", require: false
