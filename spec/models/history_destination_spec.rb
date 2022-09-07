@@ -16,7 +16,7 @@ RSpec.describe HistoryDestination, type: :model do
   # 正常系
   #
   ###############################################################
-  describe '【正常系】商品出品機能' do
+  describe '【正常系】商品購入機能' do
     context '全パラメータが正常' do
       it "postcode, prefecture_id, city, house_number, building_name, phone_number, history_idが存在すれば登録できる" do
         expect(@history_destination).to be_valid
@@ -29,7 +29,7 @@ RSpec.describe HistoryDestination, type: :model do
   # 異常系
   #
   ###############################################################
-  describe '【異常系】商品出品機能' do
+  describe '【異常系】商品購入機能' do
     context 'パラメータが空の場合' do
       it 'postcodeが空の場合' do
         @history_destination.postcode = ""
