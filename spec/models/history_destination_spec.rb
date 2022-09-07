@@ -95,6 +95,11 @@ RSpec.describe HistoryDestination, type: :model do
         @history_destination.valid?
         expect(@history_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
       end
+      it 'phone_numberが12桁の場合' do
+        @history_destination.phone_number = "999999999999"
+        @history_destination.valid?
+        expect(@history_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
+      end
       it 'prefecture_idが範囲外(48)の場合' do
         @history_destination.prefecture_id = 48
         @history_destination.valid?
