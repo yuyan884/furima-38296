@@ -59,7 +59,7 @@ RSpec.describe HistoryDestination, type: :model do
       it 'prefecture_idが 0 の場合' do
         @history_destination.prefecture_id = 0
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@history_destination.errors.full_messages).to include("Prefecture を入力してください")
       end
       it 'user_idが空(紐づいていない)の場合' do
         @history_destination.user_id = nil
@@ -77,27 +77,27 @@ RSpec.describe HistoryDestination, type: :model do
       it 'postcodeのフォーマットが異なる場合' do
         @history_destination.postcode = "0000000"
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Postcode is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@history_destination.errors.full_messages).to include("Postcode が不正です。123-4567のように入力してください。")
       end
       it 'phone_numberのフォーマットが異なる場合' do
         @history_destination.phone_number = "あああああああ"
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@history_destination.errors.full_messages).to include("Phone number が不正です。数字のみを入力してください。")
       end
       it 'phone_numberが9桁の場合' do
         @history_destination.phone_number = "999999999"
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@history_destination.errors.full_messages).to include("Phone number が不正です。数字のみを入力してください。")
       end
       it 'phone_numberが12桁の場合' do
         @history_destination.phone_number = "999999999999"
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@history_destination.errors.full_messages).to include("Phone number が不正です。数字のみを入力してください。")
       end
       it 'prefecture_idが範囲外(48)の場合' do
         @history_destination.prefecture_id = 48
         @history_destination.valid?
-        expect(@history_destination.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@history_destination.errors.full_messages).to include("Prefecture を入力してください")
       end
     end
   end

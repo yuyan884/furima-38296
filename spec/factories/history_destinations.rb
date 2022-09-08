@@ -4,7 +4,7 @@ FactoryBot.define do
     BLANK_MENU = 0 # プルダウンメニュー: '---'
     # ダミーデータ
     postcode      {Faker::Address.postcode}
-    prefecture_id {Faker::Number.between(from: (BLANK_MENU+1), to: Prefecture.count)}
+    prefecture_id {Faker::Number.between(from: (BLANK_MENU+1), to: (Prefecture.count-1))}
     city          {Faker::Address.city}
     house_number  {Faker::Address.street_address}
     building_name {Faker::Address.building_number}
