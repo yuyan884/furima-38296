@@ -76,3 +76,6 @@ gem 'payjp'
 
 # AWS S3 2022.09.07
 gem "aws-sdk-s3", require: false
+
+# Japanese setting 2022.09.08
+gem 'rails-i18n'

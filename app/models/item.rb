@@ -17,12 +17,12 @@ class Item < ApplicationRecord
   # Validation
   validates :name,             presence: true, length: {maximum: MAX_NAME_LENGTH   }
   validates :detail,           presence: true, length: {maximum: MAX_DETAIL_LENGTH }
-  validates :category_id,      numericality: { greater_than: BLANK_MENU, less_than: Category.data.length,     message: "can't be blank" }
-  validates :condition_id,     numericality: { greater_than: BLANK_MENU, less_than: Condition.data.length,    message: "can't be blank" }
-  validates :shipping_fee_id,  numericality: { greater_than: BLANK_MENU, less_than: ShippingFee.data.length,  message: "can't be blank" }
-  validates :prefecture_id,    numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length,   message: "can't be blank" }
-  validates :days_delivery_id, numericality: { greater_than: BLANK_MENU, less_than: DaysDelivery.data.length, message: "can't be blank" }
-  validates :price,            numericality: { only_integer: true, message: 'Half-width number' }
-  validates :price,            numericality: { greater_than_or_equal_to: MIN_PRICE, less_than_or_equal_to: MAX_PRICE, message: "is out of setting range" }
+  validates :category_id,      numericality: { greater_than: BLANK_MENU, less_than: Category.data.length,     message: "を入力してください" }
+  validates :condition_id,     numericality: { greater_than: BLANK_MENU, less_than: Condition.data.length,    message: "を入力してください" }
+  validates :shipping_fee_id,  numericality: { greater_than: BLANK_MENU, less_than: ShippingFee.data.length,  message: "を入力してください" }
+  validates :prefecture_id,    numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length,   message: "を入力してください" }
+  validates :days_delivery_id, numericality: { greater_than: BLANK_MENU, less_than: DaysDelivery.data.length, message: "を入力してください" }
+  validates :price,            numericality: { only_integer: true, message: 'は半角数字で入力してください' }
+  validates :price,            numericality: { greater_than_or_equal_to: MIN_PRICE, less_than_or_equal_to: MAX_PRICE, message: "は¥300〜9,999,999の範囲で入力してください" }
   validates :image,            presence: true
 end

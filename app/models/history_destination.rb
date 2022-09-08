@@ -9,15 +9,15 @@ class HistoryDestination
 
   # Validations
   with_options presence: true do
-    validates :postcode,      format: { with: POSTCODE_REGEX,    message: "is invalid. Enter it as follows (e.g. 123-4567)" }
+    validates :postcode,      format: { with: POSTCODE_REGEX,    message: "が不正です。123-4567のように入力してください。" }
     validates :city
     validates :house_number
-    validates :phone_number,  format: { with: PHONENUMBER_REGEX, message: "is invalid. Input only number" }
+    validates :phone_number,  format: { with: PHONENUMBER_REGEX, message: "が不正です。数字のみを入力してください。" }
     validates :token
     validates :user_id
     validates :item_id
   end
-  validates :prefecture_id, numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length, message: "can't be blank" }
+  validates :prefecture_id, numericality: { greater_than: BLANK_MENU, less_than: Prefecture.data.length, message: "を入力してください" }
 
   # Methods
   def save
